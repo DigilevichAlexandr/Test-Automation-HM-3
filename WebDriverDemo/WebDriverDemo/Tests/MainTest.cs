@@ -16,14 +16,12 @@ namespace WebDriverDemo.Tests
             GoogleMainPage.OpenGoogle();
 
             GoogleMainPage googleMainPage = new GoogleMainPage();
-            googleMainPage.SearchByText("epam");
+            googleMainPage.SearchByText("epam вакансии");
             googleMainPage.ClickMainRelevantLink();
 
             EpamMainPage epamMainPage = new EpamMainPage();
-            epamMainPage.OpenTestersSection();
-
-            CareerPage careerPage = new CareerPage();
-            careerPage.FilterByLocation();
+            epamMainPage.SearchJobByText("automation testing");
+            epamMainPage.ClickFirstRelevantLink();
         }
     }
 }

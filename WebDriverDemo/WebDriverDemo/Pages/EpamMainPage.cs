@@ -11,28 +11,22 @@ namespace WebDriverDemo.Pages
 {
     public class EpamMainPage
     {
-        [FindsBy(How = How.XPath, Using = "//div[@class='slide']/../../li[2]")]
-        public IWebElement TestersLink { get; private set; }
+        [FindsBy(How = How.XPath, Using = "//input[@placeholder='Ключевые слова (не обязательно):']")]
+        public IWebElement JobSearch { get; private set; }
 
-        [FindsBy(How = How.XPath, Using = "//a[text()='ТЕСТИРУЙТЕ ВМЕСТЕ С НАМИ']")]
-        public IWebElement TestersVacanciesLink { get; private set; }
+        [FindsBy(How = How.XPath, Using = "//a[@class='link']")]
+        public IWebElement RelevantLink { get; private set; }
 
-        public EpamMainPage()
+        public void SearchJobByText(string text)
         {
-            PageFactory.InitElements(WebDriver.GetDriver(), this);
+            JobSearch.Click();
+            JobSearch.SendKeys(text);
+            JobSearch.SendKeys(Keys.Enter);
         }
 
-        public void OpenTestersSection()
+        public void ClickFirstRelevantLink()
         {
-            WebDriver.GetDriver().SwitchTo().Window(WebDriver.GetDriver().WindowHandles[1]);
-
-            WebDriverWait wait = new WebDriverWait(WebDriver.GetDriver(), TimeSpan.FromSeconds(10));
-            wait.Until(n => TestersLink.Displayed);
-            Actions act = new Actions(WebDriver.GetDriver());
-            act.MoveToElement(TestersLink).Build().Perform();
-
-            wait.Until(n => TestersVacanciesLink.Displayed);
-            TestersVacanciesLink.Click();
+            RelevantLink.Click();
         }
     }
 }

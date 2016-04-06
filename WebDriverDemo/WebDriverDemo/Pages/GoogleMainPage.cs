@@ -14,8 +14,8 @@ namespace WebDriverDemo.Pages
         [FindsBy(How = How.XPath, Using = "//input[@id='lst-ib']")]
         public IWebElement SearchInput { get; private set; }
 
-        [FindsBy(How = How.XPath, Using = "//a[text()='EPAM | Разработка ПО']")]
-        public IWebElement MostRelevantLink { get; private set; }
+        [FindsBy(How = How.XPath, Using = "//a[text()='Вакансии - Epam']")]
+        public IWebElement MostRelevantLink { get; private set; }        
 
         [FindsBy(How = How.XPath, Using = "//div[@id='search']")]
         public IWebElement SearchResultsContainer { get; private set; }
@@ -42,7 +42,7 @@ namespace WebDriverDemo.Pages
 
         public static void OpenGoogle()
         {
-            WebDriver.GetDriver().Navigate().GoToUrl("https://www.google.ru/?gws_rd=ssl");
+            WebDriver.GetChromeDriver().Navigate().GoToUrl("https://www.google.ru/?gws_rd=ssl");
         }
     }
 }
